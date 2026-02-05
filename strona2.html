@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Czy zostaniesz moją Walentynką? ❤️</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    position: relative;
+    width: 300px;
+    height: 150px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+}
+
+#no {
+    position: absolute;
+    background: #555;
+    color: white;
+    left: 150px;
+    top: 60px;
+}
+</style>
+</head>
+<body>
+<video id="bgVideo" autoplay muted loop>
+    <source src="kochamcie.mp4" type="video/mp4">
+    
+</video>
+
+<div class="overlay"></div>
+
+<div class="container">
+    <h1>Czy zostaniesz moją Walentynką? ❤️</h1>
+
+    <div class="buttons">
+        <button id="yes" onclick="playSound()">Tak</button>
+        <button id="no">Nie</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const area = document.querySelector(".buttons");
+
+noBtn.addEventListener("mouseover", () => {
+    const maxX = area.clientWidth - noBtn.offsetWidth;
+    const maxY = area.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+	
+});
+
+function playSound() {
+    const video = document.getElementById("bgVideo");
+    video.muted = false;
+    video.play();
+    alert("Wiedziałem! ❤️🥰");
+}
+</script>
+
+</body>
+</html>
